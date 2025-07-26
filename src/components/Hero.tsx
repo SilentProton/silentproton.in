@@ -63,7 +63,7 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl text-blue-100">
-            I'm Subhajit Khila also known as{" "}
+            I&apos;m Subhajit Khila also known as{" "}
             <a
               href="https://silentproton.in/"
               target="_blank"
