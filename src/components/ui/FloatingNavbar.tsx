@@ -1,0 +1,66 @@
+"use client";
+import React, { useState } from "react";
+import type { JSX } from "react";
+
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "motion/react";
+import { cn } from "@/lib/utils";
+
+export const FloatingNav = ({
+  navItems,
+  className,
+}: {
+  navItems: {
+    name: string;
+    link: string;
+    icon?: JSX.Element;
+  }[];
+  className?: string;
+}) => {
+  const { scrollYProgress } = useScroll();
+  const [visible, setVisible] = useState(false);
+
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
+    if (typeof current === "number") {
+      const direction = current - scrollYProgress.getPrevious()!;
+      if (scrollYProgress.get() < 0.05) {
+        setVisible(false);
+      } else {
+        setVisible(direction < 0);
+      }
+    }
+  });
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        initial={{ opacity: 1, y: -100 }}
+        animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+        className={cn(
+          "flex max-w-fit fixed top-10 inset-x-0 mx-auto z-[5000] items-center justify-center space-x-4 rounded-full px-6 py-2 pr-2 border dark:border-white/[0.2] bg-white dark:bg-black shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]",
+          className
+        )}
+      >
+        {navItems.map((navItem, idx) => (
+          <a
+            key={`link-${idx}`}
+            href={navItem.link}
+            className={cn(
+              "relative flex items-center px-4 py-2 text-sm font-medium rounded-full border border-neutral-200 dark:border-white/[0.2] text-black dark:text-white transition hover:text-neutral-500 dark:hover:text-neutral-300"
+            )}
+          >
+            <span className="block sm:hidden mr-1">{navItem.icon}</span>
+            <span className="hidden sm:block">{navItem.name}</span>
+            {/* Gradient underline */}
+            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+          </a>
+        ))}
+      </motion.div>
+    </AnimatePresence>
+  );
+};
