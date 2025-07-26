@@ -8,9 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "overrides": {
-  "react-syntax-highlighter": "15.0.0"
-  },
   "jsx": "react-jsx",
   "dependencies": {
     "@tabler/icons-react": "^3.34.1",
