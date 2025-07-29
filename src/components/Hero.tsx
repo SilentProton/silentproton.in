@@ -38,18 +38,19 @@ const Hero = () => {
   return (
     <>
       <Spotlight />
-      <div className="relative flex flex-col h-[50rem] w-full items-center justify-center bg-white dark:bg-black">
+
+      <div className="relative flex flex-col h-[50rem] w-full items-center justify-center bg-black text-white">
         {/* Grid background */}
         <div
           className={cn(
             "absolute inset-0 z-0",
             "[background-size:20px_20px]",
-            "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-            "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]",
+            "[background-image:radial-gradient(#404040_1px,transparent_1px)]"
           )}
         />
-        {/* Radial fade background */}
-        <div className="absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black z-0" />
+
+        {/* Radial fade overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] z-0" />
 
         {/* Main Content */}
         <div className="relative z-10 flex flex-col items-center justify-center">
@@ -58,7 +59,7 @@ const Hero = () => {
           </h2>
 
           <TypewriterEffect
-            className="text-center text-xl md:text-3xl lg:text-5xl pt-5 pb-10"
+            className="text-center text-xl md:text-3xl lg:text-5xl pt-5 pb-10 text-amber-50"
             words={words}
           />
 
@@ -81,8 +82,6 @@ const Hero = () => {
           </a>
         </div>
       </div>
-
-
     </>
   )
 }
