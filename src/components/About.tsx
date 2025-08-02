@@ -38,7 +38,7 @@ const About = () => {
                 <div className="mx-auto w-full sm:w-[90%] md:w-[80%] lg:w-[70%]">
                     <CodeBlock
                         language="typescript"
-                        filename="SilentProton.md"
+                        filename="silentproton.ts"
                         highlightLines={[0]}
                         code={code}
                     />
