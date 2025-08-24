@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import { Spotlight } from './ui/Spotlight'
 import { cn } from "@/lib/utils";
@@ -5,7 +6,7 @@ import MagicButton from './ui/MagicButton';
 import { FaLocationArrow } from "react-icons/fa";
 import { TypewriterEffect } from './ui/TypewriterEffect';
 import { FlipWords } from './ui/FlipWords';
-
+import { ReactTyped } from "react-typed";
 
 const Hero = () => {
 
@@ -25,10 +26,21 @@ const Hero = () => {
     {
       text: (
         <span>
-          <FlipWords
-            words={["TypeScript", "JavaScript", "Rust"]}
-            duration={3000}
-            className={"text-blue-500 dark:text-blue-500"}
+          <ReactTyped
+            className="text-center text-xl md:text-3xl lg:text-5xl pt-5 pb-10"
+            strings={[
+              `<span class="text-blue-400">TypeScript</span>`,
+              `<span class="text-yellow-400">JavaScript</span>`,
+              `<span class="text-orange-400">Rust</span>`,
+            ]}
+            typeSpeed={40}
+            backSpeed={50}
+            loop={true}
+            contentType="html"
+            showCursor={false}
+            smartBackspace={true}
+            shuffle={false}
+            backDelay={700}
           />
         </span>
       )
