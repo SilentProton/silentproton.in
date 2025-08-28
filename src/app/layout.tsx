@@ -20,7 +20,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "silentproton",
-  description: "portfolio of silentproton",
+  description: "homepage of silentproton",
+  icons: {
+    icon: "/favicon.png", 
+  },
 };
 
 export default function RootLayout({
